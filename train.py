@@ -199,12 +199,21 @@ def train(epoch):
             #     r_nr_loss /= len(adv_r_outputs)
 
             # 我的尝试----kl_loss
+<<<<<<< HEAD
             kl_loss = torch.tensor(0.).to(device)
             if not len(adv_r_outputs) == 0 and len(adv_rec_outputs) == 0:
                 for nr_out, rec_out in adv_nr_outputs, adv_rec_outputs:
                     kl_loss += klLoss(F.log_softmax(nr_out), F.softmax(rec_out))
                     kl_loss += klLoss(F.log_softmax(rec_out), F.softmax(nr_out))
                 kl_loss /= len(adv_nr_outputs) * 2
+=======
+            # kl_loss = torch.tensor(0.).to(device)
+            # if not len(adv_r_outputs) == 0 and len(adv_rec_outputs) == 0:
+            #     for r_out, rec_out in adv_r_outputs, adv_rec_outputs:
+            #         kl_loss += klLoss(F.log_softmax(r_out), F.softmax(rec_out))
+            #         kl_loss += klLoss(F.log_softmax(rec_out), F.softmax(r_out))
+            #     kl_loss /= len(adv_nr_outputs) * 2
+>>>>>>> 4b57aae98d230f0282c345e6775888feda641368
 
             # kl_loss_1 = torch.tensor(0.).to(device)
             # if not len(adv_nr_outputs) == 0 and len(adv_r_outputs) == 0:
@@ -214,6 +223,7 @@ def train(epoch):
 
 
 
+<<<<<<< HEAD
             # kl_loss_2 = torch.tensor(0.).to(device)
             # if not len(nat_outputs) == 0 and len(adv_outputs) == 0:
             #     for nat_output, adv_output in nat_outputs, adv_outputs:
@@ -224,6 +234,18 @@ def train(epoch):
 
             # loss = adv_cls_loss + 6 * kl_loss_2
             loss = adv_cls_loss + sep_loss + rec_loss + 6 * kl_loss
+=======
+            kl_loss_2 = torch.tensor(0.).to(device)
+            if not len(nat_outputs) == 0 and len(adv_outputs) == 0:
+                for nat_output, adv_output in nat_outputs, adv_outputs:
+                    kl_loss_2 += klLoss(F.log_softmax(nat_output), F.softmax(adv_output))
+                    kl_loss_2 += klLoss(F.log_softmax(adv_output), F.softmax(nat_output))
+                kl_loss_2 /= len(nat_outputs) * 2
+
+
+            # loss = adv_cls_loss + 6 * kl_loss_2
+            loss = adv_cls_loss + sep_loss + rec_loss + 6 * kl_loss_2
+>>>>>>> 4b57aae98d230f0282c345e6775888feda641368
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -242,7 +264,11 @@ def train(epoch):
                 Rec_Loss='{:.3f}'.format(rec_losses / (batch_idx + 1)),
                 # R_NR_Loss='{:.3f}'.format(r_nr_losses / (batch_idx + 1)),
                 Adv_Acc='{:.3f}%'.format(100. * adv_correct / total),
+<<<<<<< HEAD
                 KL_Loss='{:.3f}'.format(kl_loss / (batch_idx + 1)),
+=======
+                KL_Loss='{:.3f}'.format(kl_loss_2 / (batch_idx + 1)),
+>>>>>>> 4b57aae98d230f0282c345e6775888feda641368
             )
             _tqdm.update(inputs.shape[0])
 
