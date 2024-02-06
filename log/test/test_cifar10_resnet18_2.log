@@ -1,0 +1,7 @@
+nohup: ignoring input
+Files already downloaded and verified
+FGSM: Ori Acc: 81.18%	Adv Acc: 56.48%
+PGD-20: Ori Acc: 81.18%	Adv Acc: 51.10%
+PGD-100: Ori Acc: 81.18%	Adv Acc: 49.88%
+C&W: Ori Acc: 81.18%	Adv Acc: 48.95%
+Ensemble : 47.16%
