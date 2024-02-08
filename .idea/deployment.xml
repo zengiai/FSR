@@ -2,10 +2,17 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
+      <paths name="server">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zengiai/project/FSR-main" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="zengiai@10.166.33.222:22">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/zengiai/project/FSR-main" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
